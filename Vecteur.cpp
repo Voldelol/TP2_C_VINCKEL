@@ -4,15 +4,33 @@
 
 #include "Vecteur.h"
 #include <iostream>
+#include <valarray>
+
 Vecteur::Vecteur(int n)  {
     this->n=n;
     this->p=new int[n];
 }
-Vecteur::Vecteur(Vecteur* v){
-    this->n=(*v).n;
-    this->p=new int[n];
+Vecteur::Vecteur(const Vecteur& v) {  // Constructeur de copie
+    this->n = v.n;
+    this->p = new int[n];
     for (int i = 0; i < n; ++i) {
-        *(p+i)=*((*v).p+i);
+        p[i] = v.p[i];
+    }
+}
+void Vecteur::adjustSizeTo( Vecteur& v) {
+    if (n < v.n) {
+        int *newP = new int[v.n];
+        for (int i = 0; i < n; ++i) {
+            newP[i] = p[i];
+        }
+        for (int i = n; i < v.n; ++i) {
+            newP[i] = static_cast<int>(std::pow(10, -10));
+        }
+        delete[] p;
+        p = newP;
+        n = v.n;
+    } else if (n > v.n) {
+        v.adjustSizeTo(*this);  // adjust the size of the passed vector
     }
 }
 bool Vecteur::operator==(Vecteur v){

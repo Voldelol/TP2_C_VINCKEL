@@ -12,7 +12,7 @@ class Vecteur {
         int n;
     public:
     Vecteur(int n);
-    Vecteur(Vecteur* v);
+    Vecteur(const Vecteur& v);
     bool operator==(Vecteur v);
     bool operator!=(Vecteur v);
     Vecteur operator+=(Vecteur v);
@@ -21,6 +21,7 @@ class Vecteur {
     Vecteur operator-=(Vecteur v);
     Vecteur operator=(Vecteur v);
     Vecteur operator*(Vecteur v);
+    void adjustSizeTo(Vecteur& v);
     int operator[](const int i);
     void setP(int* coords);
     int getN() const{return n;};
