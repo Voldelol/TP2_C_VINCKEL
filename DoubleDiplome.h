@@ -15,7 +15,7 @@ public:
             : Etudiant(id, nom, specialite), Master(id, nom, specialite, noteStage), Ingenieur(id, nom, specialite, scoreTOEIC) {}
 
     void afficher() override {
-        std::cout << "ID: " << id << ", Nom: " << nom << ", Specialité: " << specialite << ", Note de stage: " << noteStage << ", Score TOEIC: " << scoreTOEIC << std::endl;
+        std::cout << "ID: " << id << ", Nom: " << nom << ", Specialite: " << specialite << ", Note de stage: " << noteStage << ", Score TOEIC: " << scoreTOEIC << std::endl;
     }
 };
 

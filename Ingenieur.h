@@ -15,7 +15,7 @@ public:
             : Etudiant(id, nom, specialite), scoreTOEIC(scoreTOEIC) {}
 
     void afficher() override {
-        std::cout << "ID: " << id << ", Nom: " << nom << ", Specialité: " << specialite << ", Score TOEIC: " << scoreTOEIC << std::endl;
+        std::cout << "ID: " << id << ", Nom: " << nom << ", Specialite: " << specialite << ", Score TOEIC: " << scoreTOEIC << std::endl;
     }
 };
 

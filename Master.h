@@ -15,7 +15,7 @@ public:
             : Etudiant(id, nom, specialite), noteStage(noteStage) {}
 
     void afficher() override {
-        std::cout << "ID: " << id << ", Nom: " << nom << ", Specialité: " << specialite << ", Note de stage: " << noteStage << std::endl;
+        std::cout << "ID: " << id << ", Nom: " << nom << ", Specialite: " << specialite << ", Note de stage: " << noteStage << std::endl;
     }
 };
 
