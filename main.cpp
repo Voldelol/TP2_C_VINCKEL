@@ -50,9 +50,9 @@ int main() {
     }
     std::vector<Etudiant*> etudiants;
 
-    etudiants.push_back(new Master(1, "Alice", "Informatique", 15));
-    etudiants.push_back(new Ingenieur(2, "Bob", "Electronique", 650));
-    etudiants.push_back(new DoubleDiplome(3, "Charlie", "Mécanique", 12, 700));
+    etudiants.push_back(new Master(1, "Francois", "Informatique", 15));
+    etudiants.push_back(new Ingenieur(2, "Louis", "Electronique", 650));
+    etudiants.push_back(new DoubleDiplome(3, "Pierre", "Mecanique", 12, 700));
 
     for (auto& etudiant : etudiants) {
         etudiant->afficher();
