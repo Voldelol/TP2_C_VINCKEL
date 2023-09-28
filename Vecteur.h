@@ -21,6 +21,8 @@ class Vecteur {
     Vecteur operator-=(Vecteur v);
     Vecteur operator=(Vecteur v);
     Vecteur operator*(Vecteur v);
+    Vecteur operator-(Vecteur v);
+    Vecteur operator/(Vecteur v);
     void adjustSizeTo(Vecteur& v);
     int operator[](const int i);
     void setP(int* coords);

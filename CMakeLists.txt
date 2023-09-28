@@ -7,4 +7,12 @@ add_executable(untitled1 main.cpp
         Vecteur.cpp
         Vecteur.h
         Ensemble.cpp
-        Ensemble.h)
+        Ensemble.h
+        Etudiant.cpp
+        Etudiant.h
+        Master.cpp
+        Master.h
+        Ingenieur.cpp
+        Ingenieur.h
+        DoubleDiplome.cpp
+        DoubleDiplome.h)

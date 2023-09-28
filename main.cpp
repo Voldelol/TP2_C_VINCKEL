@@ -1,6 +1,11 @@
 #include <iostream>
+#include <vector>
 #include "Vecteur.h"
 #include "Ensemble.h"
+#include "Etudiant.h"
+#include "Master.h"
+#include "Ingenieur.h"
+#include "DoubleDiplome.h"
 
 
 int main() {
@@ -42,6 +47,20 @@ int main() {
 
     if (e1==e2){
         std::cout<<"Memes ensembles"<<std::endl;
+    }
+    std::vector<Etudiant*> etudiants;
+
+    etudiants.push_back(new Master(1, "Alice", "Informatique", 15));
+    etudiants.push_back(new Ingenieur(2, "Bob", "Electronique", 650));
+    etudiants.push_back(new DoubleDiplome(3, "Charlie", "Mécanique", 12, 700));
+
+    for (auto& etudiant : etudiants) {
+        etudiant->afficher();
+    }
+
+    // Libération de la mémoire
+    for (auto& etudiant : etudiants) {
+        delete etudiant;
     }
 
     return 0;

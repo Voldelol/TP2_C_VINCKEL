@@ -5,6 +5,7 @@
 #include "Vecteur.h"
 #include <iostream>
 #include <valarray>
+#include <climits>
 
 Vecteur::Vecteur(int n)  {
     this->n=n;
@@ -30,7 +31,7 @@ void Vecteur::adjustSizeTo( Vecteur& v) {
         p = newP;
         n = v.n;
     } else if (n > v.n) {
-        v.adjustSizeTo(*this);  // adjust the size of the passed vector
+        v.adjustSizeTo(*this);
     }
 }
 bool Vecteur::operator==(Vecteur v){
@@ -50,28 +51,30 @@ bool Vecteur::operator!=(Vecteur v){
     return !operator==(v);
 }
 Vecteur Vecteur::operator+=(Vecteur v){
-    if (n!=v.n){
-        std::cout<<"Wrong size"<<std::endl;
-        return *this;
-    }
+    adjustSizeTo(v);
     for (int i = 0; i <n ; ++i) {
         *(p+i)+=*(v.p+i);
     }
     return *this;
 }
 Vecteur Vecteur::operator=(Vecteur v){
-    if (n!=v.n){
-        n=v.n;
-        this->p=new int[v.n];
-    }
+    adjustSizeTo(v);
     for (int i = 0; i <n ; ++i) {
         *(p+i)=*(v.p+i);
     }
     return *this;
 }
-Vecteur Vecteur::operator*(Vecteur v){
+Vecteur Vecteur::operator*(Vecteur v) {
+    adjustSizeTo(v);
 
+    Vecteur result(n);
+    for (int i = 0; i < n; ++i) {
+        result.p[i] = this->p[i] * v.p[i];
+    }
+
+    return result;
 }
+
 Vecteur Vecteur::operator-=(Vecteur v){
     if (n!=v.n){
         std::cout<<"Wrong size"<<std::endl;
@@ -101,6 +104,32 @@ Vecteur Vecteur::operator*=(Vecteur v){
         *(p+i)*=*(v.p+i);
     }
     return *this;
+}
+Vecteur Vecteur::operator-(Vecteur v) {
+    adjustSizeTo(v);
+
+    Vecteur result(n);
+    for (int i = 0; i < n; ++i) {
+        result.p[i] = this->p[i] - v.p[i];
+    }
+
+    return result;
+}
+
+Vecteur Vecteur::operator/(Vecteur v) {
+    adjustSizeTo(v);
+
+    Vecteur result(n);
+    for (int i = 0; i < n; ++i) {
+        if (v.p[i] != 0) {  // Gérer la division par zéro
+            result.p[i] = this->p[i] / v.p[i];
+        } else {
+            //pour le cas dela division par zéro , on mets l'entier maximal
+            result.p[i] = INT_MAX;
+        }
+    }
+
+    return result;
 }
 void Vecteur::setP(int* coords){
     this->p=coords;
